@@ -5,10 +5,10 @@ class Calculator extends Component {
     showOrders(orders) {
         if (!orders || orders.length == 0) {
             return <li className='text-right text-muted title'>ไม่มีสินค้าค่ะ</li>
-        } 
+        }
         else {
             return orders.map(orders => {
-                return  (
+                return (
                     <li className='text-right text-success title'>
                         {orders.product.productName} x {orders.quantity} = {orders.product.unitPrice * orders.quantity}
                         <button className='btn btn-light btn-sm' onClick={() => this.props.onDelOrder(orders.product)}>X</button>
@@ -30,8 +30,8 @@ class Calculator extends Component {
                     {this.showOrders(orders)}
                 </ul>
                 <hr />
-                <button className='btn btn-block btn-danger title'>ยืนยัน</button>
-                <button className='btn btn-block btn-secondary title'>ยกเลิก</button>
+                <button className='btn btn-block btn-danger title' onClick={() => this.props.onConfirmOrder()}>ยืนยัน</button>
+                <button className='btn btn-block btn-secondary title' onClick={() => this.props.onCancelOrder()}>ยกเลิก</button>
             </div>
         )
     }
